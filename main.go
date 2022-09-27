@@ -20,7 +20,7 @@ THE SOFTWARE.
 */
 package main
 
-import "github.com/straubt1/tfx/cmd"
+import "github.com/gchappel/tfx/cmd"
 
 func main() {
 	cmd.Execute()
