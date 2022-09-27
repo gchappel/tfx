@@ -189,6 +189,7 @@ func workspaceList(c TfxClientContext, searchString string, repoIdentifier strin
 			cr_status = string(i.CurrentRun.Status)
 		}
 		ws_repo := ""
+		ws_branch := ""
 		if i.VCSRepo != nil {
 			ws_repo = i.VCSRepo.DisplayIdentifier
 			ws_branch = i.VCSRepo.Branch
@@ -239,6 +240,7 @@ func workspaceListAll(c TfxClientContext, searchString string, repoIdentifier st
 			cr_status = string(i.CurrentRun.Status)
 		}
 		ws_repo := ""
+		ws_branch := ""		
 		if i.VCSRepo != nil {
 			ws_repo = i.VCSRepo.DisplayIdentifier
 			ws_branch = i.VCSRepo.Branch
