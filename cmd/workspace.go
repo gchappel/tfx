@@ -180,7 +180,7 @@ func workspaceList(c TfxClientContext, searchString string, repoIdentifier strin
 		o.AddFormattedMessageCalculated("Found %d Filtered Workspaces", len(items))
 	}
 
-	o.AddTableHeader("Name", "Id", "Current Run Created", "Status", "Repository", "Locked")
+	o.AddTableHeader("Name", "Id", "Current Run Created", "Status", "Repository", "Branch", "Locked")
 	for _, i := range items {
 		cr_created_at := ""
 		cr_status := ""
@@ -191,9 +191,10 @@ func workspaceList(c TfxClientContext, searchString string, repoIdentifier strin
 		ws_repo := ""
 		if i.VCSRepo != nil {
 			ws_repo = i.VCSRepo.DisplayIdentifier
+			ws_branch = i.VCSRepo.Branch
 		}
 
-		o.AddTableRows(i.Name, i.ID, cr_created_at, cr_status, ws_repo, i.Locked)
+		o.AddTableRows(i.Name, i.ID, cr_created_at, cr_status, ws_repo, ws_branch, i.Locked)
 	}
 
 	return nil
@@ -229,7 +230,7 @@ func workspaceListAll(c TfxClientContext, searchString string, repoIdentifier st
 		o.AddFormattedMessageCalculated("Found %d Filtered Workspaces", len(allWorkspaceList))
 	}
 
-	o.AddTableHeader("Organization", "Name", "Id", "Current Run Created", "Status", "Repository", "Locked")
+	o.AddTableHeader("Organization", "Name", "Id", "Current Run Created", "Status", "Repository", "Branch", "Locked")
 	for _, i := range allWorkspaceList {
 		cr_created_at := ""
 		cr_status := ""
@@ -240,9 +241,10 @@ func workspaceListAll(c TfxClientContext, searchString string, repoIdentifier st
 		ws_repo := ""
 		if i.VCSRepo != nil {
 			ws_repo = i.VCSRepo.DisplayIdentifier
+			ws_branch = i.VCSRepo.Branch
 		}
 
-		o.AddTableRows(i.Organization.Name, i.Name, i.ID, cr_created_at, cr_status, ws_repo, i.Locked)
+		o.AddTableRows(i.Organization.Name, i.Name, i.ID, cr_created_at, cr_status, ws_repo, ws_branch, i.Locked)
 	}
 
 	return nil
