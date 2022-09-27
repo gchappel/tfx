@@ -1,4 +1,4 @@
-module github.com/straubt1/tfx
+module github.com/gchappel/tfx
 
 go 1.19
 
